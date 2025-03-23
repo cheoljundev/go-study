@@ -23,5 +23,7 @@ func main() {
 		fmt.Println("ch1에서 수신:", msg)
 	case msg := <-ch2:
 		fmt.Println("ch2에서 수신:", msg)
+	default:
+		fmt.Println("아직 메시지가 안 왔어요!")
 	}
 }
