@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func workerWithResultChannel(id int, jobs <-chan int, results chan<- string, wg *sync.WaitGroup) {
+func workerStep13(id int, jobs <-chan int, results chan<- string, wg *sync.WaitGroup) {
 	defer wg.Done()
 	fmt.Printf("작업자 #%d: 작업 대기 중...\n", id)
 	for job := range jobs {
@@ -27,7 +27,7 @@ func main() {
 
 	for w := 1; w <= workerCount; w++ {
 		wg.Add(1)
-		go workerWithResultChannel(w, jobs, results, &wg)
+		go workerStep13(w, jobs, results, &wg)
 	}
 
 	time.Sleep(100 * time.Millisecond) // 💡 고루틴이 실행될 틈을 줌
